@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="depth">
+      <feDropShadow dx="3" dy="3" stdDeviation="0.5" flood-color="#000000" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <rect width="200" height="200" fill="#0c0c0f"/>
+
+  <!-- M - top left, tilted CCW -->
+  <text transform="translate(8,66) rotate(-12)" font-family="'Arial Black', Impact, sans-serif" font-size="54" font-weight="900" fill="white" filter="url(#depth)">M</text>
+
+  <!-- R - top right, tilted CW -->
+  <text transform="translate(116,64) rotate(9)" font-family="'Arial Black', Impact, sans-serif" font-size="54" font-weight="900" fill="white" filter="url(#depth)">R</text>
+
+  <!-- O - mid left, tilted CCW -->
+  <text transform="translate(4,136) rotate(-7)" font-family="'Arial Black', Impact, sans-serif" font-size="54" font-weight="900" fill="white" filter="url(#depth)">O</text>
+
+  <!-- E - mid right, tilted CW -->
+  <text transform="translate(122,138) rotate(11)" font-family="'Arial Black', Impact, sans-serif" font-size="54" font-weight="900" fill="white" filter="url(#depth)">E</text>
+
+  <!-- V - bottom left, slight tilt -->
+  <text transform="translate(18,196) rotate(-8)" font-family="'Arial Black', Impact, sans-serif" font-size="54" font-weight="900" fill="white" filter="url(#depth)">V</text>
+
+  <!-- S - bottom right, tilted CW -->
+  <text transform="translate(128,194) rotate(7)" font-family="'Arial Black', Impact, sans-serif" font-size="54" font-weight="900" fill="white" filter="url(#depth)">S</text>
+</svg>
