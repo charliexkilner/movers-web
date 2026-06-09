@@ -2,32 +2,64 @@
 
 import Image from "next/image";
 
-/* ─── Data ─────────────────────────────────────────────── */
+/* ─── Data ─────────────────────────────────────────── */
 
 const HOURS = [
-  "Monday: 09:00 – 21:00",
-  "Tuesday – Wednesday: 09:00 – 23:30",
-  "Friday – Saturday: 09:00 – 00:00",
-  "Sunday: 09:00 – 21:00",
+  { days: "Tue – Wed", time: "11:00 – 21:00" },
+  { days: "Thu – Sat", time: "11:00 – 00:00" },
 ];
 
-/* ─── Page ──────────────────────────────────────────────── */
+/* ─── Helpers ───────────────────────────────────────── */
+
+/** Grey placeholder shown until a real photo is dropped in */
+function PhotoSlot({ label, aspect = "aspect-[4/3]" }: { label: string; aspect?: string }) {
+  return (
+    <div
+      className={`w-full ${aspect} bg-zinc-100 flex items-center justify-center text-zinc-400 text-sm border border-zinc-200`}
+      style={{ fontFamily: "var(--font-mono)" }}
+    >
+      {label}
+    </div>
+  );
+}
+
+/* ─── Page ──────────────────────────────────────────── */
 
 export default function Home() {
   return (
     <>
-      {/* ══════════════════════════════════════════════════
-          HERO — Cafe by Day / HiFi by Night
-      ══════════════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════ */}
       <section
         id="hero"
-        className="relative h-screen w-full overflow-hidden"
-        style={{ backgroundColor: "#0a0a0a" }}
+        className="relative w-full overflow-hidden"
+        style={{ height: "100svh", minHeight: "500px", backgroundColor: "#0a0a0a" }}
       >
-        {/* swap src for /hero-bg.jpg when you have venue photography */}
-        <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+        {/* Background image slideshow
+            Drop photos into /public/ and update the src values below:
+            bg-atrium.jpg | bg-coffee.jpg | bg-pints.jpg | bg-cake.jpg    */}
+        <div
+          className="bg-slide"
+          style={{ backgroundImage: "url('/bg-atrium.jpg')" }}
+        />
+        <div
+          className="bg-slide"
+          style={{ backgroundImage: "url('/bg-coffee.jpg')" }}
+        />
+        <div
+          className="bg-slide"
+          style={{ backgroundImage: "url('/bg-pints.jpg')" }}
+        />
+        <div
+          className="bg-slide"
+          style={{ backgroundImage: "url('/bg-cake.jpg')" }}
+        />
 
-        {/* Nav */}
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60 pointer-events-none z-[1]" />
+
+        {/* ── Nav ── */}
         <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-10 py-5">
           <button
             aria-label="Open menu"
@@ -42,7 +74,7 @@ export default function Home() {
             Menu
           </button>
 
-          {/* Logo — centred */}
+          {/* Logo */}
           <div className="absolute left-1/2 -translate-x-1/2">
             <Image
               src="/logo.png"
@@ -50,38 +82,36 @@ export default function Home() {
               width={160}
               height={52}
               priority
-              className="invert" /* white on dark hero */
+              className="invert"
               style={{ objectFit: "contain" }}
             />
           </div>
 
-          <a
-            href="#reservations"
-            className="text-white border border-white text-[12px] italic px-5 py-1.5 hover:bg-white hover:text-black transition-colors"
-            style={{ fontFamily: "var(--font-primary)", borderRadius: "50%", letterSpacing: "0.03em" }}
-          >
-            Reservations
-          </a>
+          {/* Spacer to keep logo centred */}
+          <div className="w-[80px]" />
         </nav>
 
-        {/* Centre content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+        {/* ── Hero content ── */}
+        <div
+          className="relative z-10 flex flex-col items-center justify-center text-center px-4"
+          style={{ height: "100%" }}
+        >
           <h1
-            className="text-white font-bold uppercase leading-[0.9] mb-10"
+            className="text-white font-bold uppercase leading-[0.88] mb-8 md:mb-10"
             style={{
               fontFamily: "var(--font-primary)",
-              fontSize: "clamp(2.8rem, 9vw, 10rem)",
+              fontSize: "clamp(2.4rem, 7.5vw, 8.5rem)",
               letterSpacing: "-0.02em",
             }}
           >
-            Cafe By Day,
+            Daytime Cafe,
             <br />
-            HiFi By Night
+            Late Night Dancing
           </h1>
 
-          {/* Three anchor boxes */}
+          {/* Anchor boxes */}
           <div className="flex flex-row gap-3 md:gap-4 mb-10">
-            {(["Menu", "Events", "Co-Working"] as const).map((label) => (
+            {(["Events", "Drinks", "Co-Working"] as const).map((label) => (
               <a
                 key={label}
                 href={`#${label.toLowerCase().replace(/[^a-z]/g, "")}`}
@@ -90,312 +120,207 @@ export default function Home() {
                   fontFamily: "var(--font-primary)",
                   fontSize: "clamp(9px, 1.1vw, 12px)",
                   letterSpacing: "0.18em",
-                  padding: "clamp(10px, 1.2vw, 14px) clamp(18px, 3vw, 40px)",
+                  padding: "clamp(10px, 1.2vw, 14px) clamp(16px, 2.8vw, 38px)",
                 }}
               >
                 {label}
               </a>
             ))}
           </div>
-
-          {/* CTA */}
-          <a
-            href="#reservations"
-            className="bg-white text-black italic text-[13px] px-10 py-3 border border-white hover:bg-transparent hover:text-white transition-colors"
-            style={{ fontFamily: "var(--font-primary)", borderRadius: "50%" }}
-          >
-            Make A Reservation
-          </a>
         </div>
 
-        {/* Bottom strip */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 flex items-end justify-between px-6 md:px-10 pb-7">
+        {/* ── Bottom strip ── */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex items-end justify-between px-6 md:px-10 pb-6 md:pb-8">
+          {/* Empty left column on mobile, address on desktop */}
           <div
-            className="hidden md:block text-white leading-[1.75]"
+            className="hidden md:block text-white text-right leading-[1.75] order-3"
             style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
           >
-            {HOURS.map((l) => <p key={l}>{l}</p>)}
+            <p>15 Hockley</p>
+            <p>Nottingham, NG1 1FH</p>
           </div>
 
-          <a
-            href="#menu"
-            className="absolute left-1/2 -translate-x-1/2 bottom-7 flex flex-col items-center gap-1.5 text-white hover:opacity-60 transition-opacity"
-            style={{ fontFamily: "var(--font-primary)", fontSize: "11px", letterSpacing: "0.22em" }}
-          >
-            <span className="uppercase">Explore</span>
-            <svg width="10" height="18" viewBox="0 0 10 18" fill="none" aria-hidden="true">
-              <path d="M5 0V16M5 16L1 11M5 16L9 11" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-          </a>
+          {/* Opening times — centred */}
+          <div className="flex-1 flex flex-col items-center pb-1">
+            {HOURS.map(({ days, time }) => (
+              <p
+                key={days}
+                className="text-white leading-[1.8]"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
+              >
+                {days}: {time}
+              </p>
+            ))}
+          </div>
 
+          {/* Address — right on desktop */}
           <div
             className="hidden md:block text-white text-right leading-[1.75]"
             style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
           >
-            <p>91 Brick Lane</p>
-            <p>London, E1 6QL</p>
+            <p>15 Hockley</p>
+            <p>Nottingham, NG1 1FH</p>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
-          MENU — Cafe by Day
-      ══════════════════════════════════════════════════ */}
-      <section id="menu" className="bg-white text-black py-24 md:py-36 overflow-hidden">
-        {/* Section label */}
-        <div className="px-8 md:px-16 mb-16 md:mb-20">
-          <p
-            className="uppercase tracking-[0.25em] text-[11px] mb-3"
-            style={{ fontFamily: "var(--font-mono)" }}
-          >
-            Cafe By Day
-          </p>
-          <h2
-            className="font-bold uppercase leading-none"
-            style={{
-              fontFamily: "var(--font-primary)",
-              fontSize: "clamp(2.2rem, 5vw, 5rem)",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            What We Serve
-          </h2>
-        </div>
-
-        {/* Brunch row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start px-8 md:px-16 mb-20 md:mb-28">
-          <div className="md:pt-10">
-            <h3
-              className="font-bold uppercase mb-4"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(1.6rem, 3vw, 2.5rem)", letterSpacing: "-0.01em" }}
-            >
-              Brunch
-            </h3>
-            <p className="text-[15px] leading-relaxed max-w-sm text-zinc-700" style={{ fontFamily: "var(--font-primary)" }}>
-              We&apos;ve crafted a brunch menu inspired by a tapestry of global cuisines,
-              channelling the vibrant spirit of Brick Lane while staying rooted to our
-              laid-back café environment.
-            </p>
-          </div>
-          {/* Offset photo placeholder */}
-          <div className="relative mt-8 md:mt-0 md:-translate-y-4">
-            <div
-              className="w-full aspect-[4/3] bg-zinc-200 flex items-center justify-center text-zinc-400 text-sm"
-              style={{ fontFamily: "var(--font-mono)" }}
-            >
-              {/* replace with: <Image src="/menu-brunch.jpg" fill alt="Brunch" className="object-cover" /> */}
-              photo: brunch
-            </div>
-          </div>
-        </div>
-
-        {/* Coffee & Pastries row — reversed */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start px-8 md:px-16 mb-20 md:mb-28">
-          {/* Photo first on desktop */}
-          <div className="relative order-2 md:order-1 md:translate-y-6">
-            <div
-              className="w-full aspect-[4/3] bg-zinc-100 flex items-center justify-center text-zinc-400 text-sm"
-              style={{ fontFamily: "var(--font-mono)" }}
-            >
-              {/* replace with: <Image src="/menu-coffee.jpg" fill alt="Coffee" className="object-cover" /> */}
-              photo: coffee & pastries
-            </div>
-          </div>
-          <div className="order-1 md:order-2 md:pl-16 md:pt-8">
-            <h3
-              className="font-bold uppercase mb-4"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(1.6rem, 3vw, 2.5rem)", letterSpacing: "-0.01em" }}
-            >
-              Coffee &amp; Pastries
-            </h3>
-            <p className="text-[15px] leading-relaxed max-w-sm text-zinc-700" style={{ fontFamily: "var(--font-primary)" }}>
-              We rotate our coffee from locally sourced roasters and carry an amazing
-              range of teas and alternative hot drinks. We work with local artisan
-              bakeries for cakes, pastries, and snacks.
-            </p>
-          </div>
-        </div>
-
-        {/* Natural Wine row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 items-start px-8 md:px-16">
-          <div className="md:pt-10">
-            <h3
-              className="font-bold uppercase mb-4"
-              style={{ fontFamily: "var(--font-primary)", fontSize: "clamp(1.6rem, 3vw, 2.5rem)", letterSpacing: "-0.01em" }}
-            >
-              Natural Wine &amp; Bar
-            </h3>
-            <p className="text-[15px] leading-relaxed max-w-sm text-zinc-700" style={{ fontFamily: "var(--font-primary)" }}>
-              As the sun goes down, we pivot. A hand-picked selection of natural wines,
-              craft beers, and cocktails to soundtrack your evening — paired with the
-              finest from our record collection.
-            </p>
-            <a
-              href="#reservations"
-              className="inline-block mt-8 border border-black text-black uppercase text-[11px] tracking-[0.18em] px-8 py-3 hover:bg-black hover:text-white transition-colors"
-              style={{ fontFamily: "var(--font-primary)" }}
-            >
-              View Full Menu
-            </a>
-          </div>
-          <div className="relative mt-8 md:mt-0 md:-translate-y-4">
-            <div
-              className="w-full aspect-[4/3] bg-zinc-200 flex items-center justify-center text-zinc-400 text-sm"
-              style={{ fontFamily: "var(--font-mono)" }}
-            >
-              photo: wine & bar
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════
-          EVENTS — HiFi by Night
-      ══════════════════════════════════════════════════ */}
-      <section
-        id="events"
-        className="bg-[#0a0a0a] text-white py-24 md:py-36 overflow-hidden"
-      >
-        <div className="px-8 md:px-16 mb-16 md:mb-20">
+      {/* ══════════════════════════════════════════════
+          MENU / DRINKS
+      ══════════════════════════════════════════════ */}
+      <section id="drinks" className="bg-white text-black py-20 md:py-32 overflow-hidden">
+        <div className="px-8 md:px-16 mb-12 md:mb-16">
           <p
             className="uppercase tracking-[0.25em] text-[11px] mb-3 text-zinc-400"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-            HiFi By Night
+            Cafe &amp; Bar
           </p>
           <h2
             className="font-bold uppercase leading-none"
             style={{
               fontFamily: "var(--font-primary)",
-              fontSize: "clamp(2.2rem, 5vw, 5rem)",
+              fontSize: "clamp(2rem, 5vw, 5rem)",
               letterSpacing: "-0.02em",
             }}
           >
-            Upcoming Events
+            Menu
           </h2>
         </div>
 
-        {/* Event listing grid */}
-        <div className="px-8 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
-          {[
-            { date: "FRI 13 JUN", name: "Late Night Listening", desc: "A deep dive into audiophile hi-fi, curated records, and low lights." },
-            { date: "SAT 14 JUN", name: "Resident Showcase", desc: "Our resident DJs take over from open to close — all genres welcome." },
-            { date: "FRI 20 JUN", name: "Record Fair", desc: "Local collectors and dealers fill the floor. Bring your crates." },
-            { date: "SAT 21 JUN", name: "Live Jazz Session", desc: "Spontaneous, intimate, unrepeatable. Starts late." },
-            { date: "FRI 27 JUN", name: "Movers After Dark", desc: "The night we clear the tables, dim the lights, and let the music lead." },
-            { date: "SAT 28 JUN", name: "New Arrivals Night", desc: "First plays of freshly pressed wax. Be the first to hear." },
-          ].map((event) => (
-            <div key={event.date} className="bg-[#0a0a0a] p-8 hover:bg-white/5 transition-colors group cursor-pointer">
-              <p
-                className="text-zinc-400 text-[11px] uppercase tracking-[0.2em] mb-3"
-                style={{ fontFamily: "var(--font-mono)" }}
-              >
-                {event.date}
-              </p>
-              <h3
-                className="font-bold uppercase mb-3 group-hover:text-zinc-100"
-                style={{ fontFamily: "var(--font-primary)", fontSize: "1.1rem", letterSpacing: "-0.01em" }}
-              >
-                {event.name}
-              </h3>
-              <p className="text-zinc-400 text-[13px] leading-relaxed" style={{ fontFamily: "var(--font-primary)" }}>
-                {event.desc}
-              </p>
-              <p
-                className="mt-6 text-[11px] uppercase tracking-[0.18em] text-white/40 group-hover:text-white/80 transition-colors"
-                style={{ fontFamily: "var(--font-primary)" }}
-              >
-                Book →
-              </p>
-            </div>
-          ))}
-        </div>
+        {/* Two-column layout — text + 2 photos */}
+        <div className="px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+          <div className="md:pt-4">
+            <p
+              className="text-[16px] leading-relaxed text-zinc-700 max-w-md"
+              style={{ fontFamily: "var(--font-primary)" }}
+            >
+              Speciality coffee, ice cold pints, spritz and wine! Enjoy sweet treats
+              from our local bakery.
+            </p>
+          </div>
 
-        <div className="px-8 md:px-16 mt-12">
-          <a
-            href="#reservations"
-            className="inline-block border border-white text-white uppercase text-[11px] tracking-[0.18em] px-8 py-3 hover:bg-white hover:text-black transition-colors"
-            style={{ fontFamily: "var(--font-primary)" }}
-          >
-            All Events
-          </a>
+          {/* Photos stacked, second one offset */}
+          <div className="flex flex-col gap-4">
+            <PhotoSlot label="photo: coffee — add /public/menu-coffee.jpg" aspect="aspect-[4/3]" />
+            <div className="md:ml-8">
+              <PhotoSlot label="photo: drinks — add /public/menu-drinks.jpg" aspect="aspect-[4/3]" />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
-          CO-WORKING
-      ══════════════════════════════════════════════════ */}
-      <section id="coworking" className="bg-white text-black py-24 md:py-36">
-        <div className="px-8 md:px-16">
+      {/* ══════════════════════════════════════════════
+          EVENTS
+      ══════════════════════════════════════════════ */}
+      <section id="events" className="bg-[#0a0a0a] text-white py-20 md:py-32 overflow-hidden">
+        <div className="px-8 md:px-16 mb-12 md:mb-16">
           <p
-            className="uppercase tracking-[0.25em] text-[11px] mb-3"
+            className="uppercase tracking-[0.25em] text-[11px] mb-3 text-zinc-400"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-            During the Day
+            Late Night Dancing
           </p>
           <h2
-            className="font-bold uppercase leading-none mb-16"
+            className="font-bold uppercase leading-none"
             style={{
               fontFamily: "var(--font-primary)",
-              fontSize: "clamp(2.2rem, 5vw, 5rem)",
+              fontSize: "clamp(2rem, 5vw, 5rem)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Events
+          </h2>
+        </div>
+
+        <div className="px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+          <div className="md:pt-4">
+            <p
+              className="text-[16px] leading-relaxed text-zinc-300 max-w-md"
+              style={{ fontFamily: "var(--font-primary)" }}
+            >
+              Safe space late night dancing, LGBTQIA+ drinks, community of DJs and
+              promoter-led events. Livestreamed Eclectic Selector events — not just
+              dance music!
+            </p>
+          </div>
+
+          {/* Two crowd photos side by side, second one offset down */}
+          <div className="flex flex-col gap-4">
+            <PhotoSlot label="photo: crowd — add /public/events-crowd-1.jpg" aspect="aspect-[4/3]" />
+            <div className="md:ml-8">
+              <PhotoSlot label="photo: crowd — add /public/events-crowd-2.jpg" aspect="aspect-[4/3]" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════
+          CO-WORKING
+      ══════════════════════════════════════════════ */}
+      <section id="coworking" className="bg-white text-black py-20 md:py-32">
+        <div className="px-8 md:px-16 mb-12 md:mb-16">
+          <p
+            className="uppercase tracking-[0.25em] text-[11px] mb-3 text-zinc-400"
+            style={{ fontFamily: "var(--font-mono)" }}
+          >
+            Third Space
+          </p>
+          <h2
+            className="font-bold uppercase leading-none"
+            style={{
+              fontFamily: "var(--font-primary)",
+              fontSize: "clamp(2rem, 5vw, 5rem)",
               letterSpacing: "-0.02em",
             }}
           >
             Co-Working
           </h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
-            <div>
-              <p className="text-[15px] leading-relaxed text-zinc-700 mb-8" style={{ fontFamily: "var(--font-primary)" }}>
-                Movers is a great place to come and work. Fast Wi-Fi, great coffee, and
-                a soundtrack that keeps the day moving. No hustle-culture vibes — just
-                a calm, creative space in the heart of Brick Lane.
-              </p>
-              <p className="text-[15px] leading-relaxed text-zinc-700 mb-10" style={{ fontFamily: "var(--font-primary)" }}>
-                We ask that co-workers buy one drink per two hours. Tables are
-                first-come, first-served. Private hire and dedicated desk bookings
-                available — get in touch.
-              </p>
-
-              {/* Perks */}
-              <ul className="space-y-3">
-                {["Fast, reliable Wi-Fi", "Specialty coffee all day", "Natural light & plants", "Background vinyl, always"].map((perk) => (
-                  <li
-                    key={perk}
-                    className="flex items-center gap-3 text-[13px] uppercase tracking-[0.12em]"
-                    style={{ fontFamily: "var(--font-primary)" }}
-                  >
-                    <span className="w-1 h-1 rounded-full bg-black inline-block flex-shrink-0" />
-                    {perk}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#reservations"
-                className="inline-block mt-10 border border-black text-black uppercase text-[11px] tracking-[0.18em] px-8 py-3 hover:bg-black hover:text-white transition-colors"
-                style={{ fontFamily: "var(--font-primary)" }}
-              >
-                Book A Desk
-              </a>
-            </div>
-
-            {/* Photo placeholder */}
-            <div
-              className="w-full aspect-[3/4] bg-zinc-100 flex items-center justify-center text-zinc-400 text-sm"
-              style={{ fontFamily: "var(--font-mono)" }}
+        <div className="px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+          <div className="md:pt-4">
+            <p
+              className="text-[16px] leading-relaxed text-zinc-700 mb-8 max-w-md"
+              style={{ fontFamily: "var(--font-primary)" }}
             >
-              photo: co-working space
+              We&apos;re not just a space for music — enjoy the peace and quiet of our
+              dedicated focused atrium working space, lashings of natural daylight with
+              speciality coffee.
+            </p>
+
+            <ul className="space-y-3 mb-10">
+              {[
+                "Free wifi",
+                "Plugs with all power options (USB-A + USB-C)",
+                "£8 unlimited speciality batch brew coffee from our barista team",
+              ].map((perk) => (
+                <li
+                  key={perk}
+                  className="flex items-start gap-3 text-[14px] text-zinc-700 leading-snug"
+                  style={{ fontFamily: "var(--font-primary)" }}
+                >
+                  <span className="mt-[6px] w-1 h-1 rounded-full bg-black inline-block flex-shrink-0" />
+                  {perk}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Two photos stacked */}
+          <div className="flex flex-col gap-4">
+            <PhotoSlot label="photo: atrium — add /public/cowork-atrium.jpg" aspect="aspect-[4/3]" />
+            <div className="md:ml-8">
+              <PhotoSlot label="photo: laptop + coffee — add /public/cowork-laptop.jpg" aspect="aspect-[4/3]" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════
+      {/* ══════════════════════════════════════════════
           FOOTER
-      ══════════════════════════════════════════════════ */}
-      <footer id="reservations" className="bg-[#0a0a0a] text-white py-16 px-8 md:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+      ══════════════════════════════════════════════ */}
+      <footer className="bg-[#0a0a0a] text-white py-14 px-8 md:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
             <Image
               src="/logo.png"
@@ -405,10 +330,15 @@ export default function Home() {
               className="invert mb-6"
               style={{ objectFit: "contain" }}
             />
-            <p className="text-zinc-400 text-[13px] leading-relaxed" style={{ fontFamily: "var(--font-primary)" }}>
-              Cafe by day, HiFi by night.<br />91 Brick Lane, London, E1 6QL
+            <p
+              className="text-zinc-400 text-[13px] leading-relaxed"
+              style={{ fontFamily: "var(--font-primary)" }}
+            >
+              Nottingham&apos;s Listening Cafe,<br />
+              late night bar &amp; community third space.
             </p>
           </div>
+
           <div>
             <p
               className="uppercase tracking-[0.18em] text-[11px] mb-4 text-zinc-400"
@@ -416,37 +346,39 @@ export default function Home() {
             >
               Opening Hours
             </p>
-            {HOURS.map((l) => (
-              <p key={l} className="text-[12px] leading-[1.9] text-zinc-300" style={{ fontFamily: "var(--font-mono)" }}>
-                {l}
+            {HOURS.map(({ days, time }) => (
+              <p
+                key={days}
+                className="text-[12px] leading-[1.9] text-zinc-300"
+                style={{ fontFamily: "var(--font-mono)" }}
+              >
+                {days}: {time}
               </p>
             ))}
           </div>
+
           <div>
             <p
               className="uppercase tracking-[0.18em] text-[11px] mb-4 text-zinc-400"
               style={{ fontFamily: "var(--font-mono)" }}
             >
-              Reservations
+              Find Us
             </p>
-            <a
-              href="mailto:hello@movers.london"
-              className="block text-[13px] text-zinc-300 hover:text-white transition-colors mb-2"
+            <p
+              className="text-[13px] text-zinc-300 leading-relaxed"
               style={{ fontFamily: "var(--font-primary)" }}
             >
-              hello@movers.london
-            </a>
-            <a
-              href="#"
-              className="inline-block mt-4 border border-white text-white uppercase text-[11px] tracking-[0.18em] px-6 py-2.5 hover:bg-white hover:text-black transition-colors"
-              style={{ fontFamily: "var(--font-primary)", borderRadius: "50%" }}
-            >
-              Book Now
-            </a>
+              15 Hockley<br />
+              Nottingham, NG1 1FH
+            </p>
           </div>
         </div>
+
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between gap-4">
-          <p className="text-zinc-600 text-[11px]" style={{ fontFamily: "var(--font-mono)" }}>
+          <p
+            className="text-zinc-600 text-[11px]"
+            style={{ fontFamily: "var(--font-mono)" }}
+          >
             © 2026 Movers
           </p>
           <div className="flex gap-6">

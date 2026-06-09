@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Alte Haas Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/AlteHaasGroteskRegular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alte Haas Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/AlteHaasGroteskBold.woff') format('woff');
+  font-display: swap;
+}
+
 :root {
   --font-primary: 'Alte Haas Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'SF Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
@@ -28,6 +44,24 @@ body {
   font-family: var(--font-mono);
 }
 
-.btn-oval {
-  border-radius: 50%;
+/* ── Hero background slideshow ─────────────────────── */
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: bgFade 20s infinite;
+  opacity: 0;
+}
+.bg-slide:nth-child(1) { animation-delay: 0s; }
+.bg-slide:nth-child(2) { animation-delay: 5s; }
+.bg-slide:nth-child(3) { animation-delay: 10s; }
+.bg-slide:nth-child(4) { animation-delay: 15s; }
+
+@keyframes bgFade {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  22%  { opacity: 1; }
+  27%  { opacity: 0; }
+  100% { opacity: 0; }
 }

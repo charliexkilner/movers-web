@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Movers",
-  description: "Cafe by day, HiFi by night. 91 Brick Lane, London, E1 6QL",
+  description: "Nottingham's Listening Cafe, late night bar and community third space. Community co-working, coffee, drinks and dancing.",
 };
 
 export default function RootLayout({
@@ -13,12 +13,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.cdnfonts.com/css/alte-haas-grotesk"
-        />
-      </head>
       <body className="h-full">{children}</body>
     </html>
   );
