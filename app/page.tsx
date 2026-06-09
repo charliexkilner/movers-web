@@ -132,11 +132,13 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── Bottom strip — 3-column grid ── */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 grid grid-cols-3 items-end px-8 md:px-12 pb-9 md:pb-11">
+        {/* ── Bottom strip ── */}
+
+        {/* Desktop: 3 columns */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:grid grid-cols-3 items-end px-12 pb-10">
 
           {/* Left — social links */}
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-2">
             {[
               { label: "Instagram", href: "#" },
               { label: "RA",        href: "#" },
@@ -145,8 +147,8 @@ export default function Home() {
               <a
                 key={label}
                 href={href}
-                className="text-white/70 hover:text-white transition-colors w-fit"
-                style={{ fontFamily: "var(--font-mono)", fontSize: "13px", letterSpacing: "0.06em" }}
+                className="text-white/75 hover:text-white transition-colors w-fit"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "15px", letterSpacing: "0.05em" }}
               >
                 {label}
               </a>
@@ -158,8 +160,8 @@ export default function Home() {
             {HOURS.map(({ days, time }) => (
               <p
                 key={days}
-                className="text-white/80 leading-[1.9]"
-                style={{ fontFamily: "var(--font-mono)", fontSize: "13px" }}
+                className="text-white/80 leading-[2]"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "15px" }}
               >
                 {days}: {time}
               </p>
@@ -167,14 +169,27 @@ export default function Home() {
           </div>
 
           {/* Right — address */}
-          <div
-            className="hidden md:flex flex-col items-end text-right leading-[1.9]"
-            style={{ fontFamily: "var(--font-mono)", fontSize: "13px" }}
-          >
-            <p className="text-white/80">15 Hockley</p>
-            <p className="text-white/80">Nottingham, NG1 1FH</p>
+          <div className="flex flex-col items-end text-right leading-[2]">
+            <p className="text-white/80" style={{ fontFamily: "var(--font-mono)", fontSize: "15px" }}>15 Hockley</p>
+            <p className="text-white/80" style={{ fontFamily: "var(--font-mono)", fontSize: "15px" }}>Nottingham, NG1 1FH</p>
           </div>
 
+        </div>
+
+        {/* Mobile: centred times + address only */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex md:hidden flex-col items-center pb-8 gap-0.5">
+          {HOURS.map(({ days, time }) => (
+            <p
+              key={days}
+              className="text-white/80 leading-[2]"
+              style={{ fontFamily: "var(--font-mono)", fontSize: "14px" }}
+            >
+              {days}: {time}
+            </p>
+          ))}
+          <p className="text-white/70 mt-1" style={{ fontFamily: "var(--font-mono)", fontSize: "13px" }}>
+            15 Hockley, Nottingham NG1 1FH
+          </p>
         </div>
       </section>
 
