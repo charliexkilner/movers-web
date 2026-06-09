@@ -97,12 +97,13 @@ export default function Home() {
           style={{ height: "100%", paddingTop: "80px", paddingBottom: "100px" }}
         >
           <h1
-            className="text-white font-bold uppercase mb-12 md:mb-14"
+            className="text-white font-bold uppercase"
             style={{
               fontFamily: "var(--font-primary)",
               fontSize: "clamp(2.2rem, 6.5vw, 7.5rem)",
               letterSpacing: "-0.02em",
               lineHeight: 0.9,
+              marginBottom: "clamp(3rem, 5vw, 5.5rem)",
             }}
           >
             Daytime Cafe,
@@ -119,9 +120,9 @@ export default function Home() {
                 className="border border-white/70 text-white uppercase hover:bg-white hover:text-black transition-colors"
                 style={{
                   fontFamily: "var(--font-primary)",
-                  fontSize: "11px",
+                  fontSize: "13px",
                   letterSpacing: "0.2em",
-                  padding: "13px 32px",
+                  padding: "15px 36px",
                 }}
               >
                 {label}
@@ -131,9 +132,25 @@ export default function Home() {
         </div>
 
         {/* ── Bottom strip — 3-column grid ── */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 grid grid-cols-3 items-end px-8 md:px-12 pb-8 md:pb-10">
-          {/* Left — empty balancing column */}
-          <div />
+        <div className="absolute bottom-0 left-0 right-0 z-10 grid grid-cols-3 items-end px-8 md:px-12 pb-9 md:pb-11">
+
+          {/* Left — social links */}
+          <div className="flex flex-col gap-1.5">
+            {[
+              { label: "Instagram", href: "#" },
+              { label: "RA",        href: "#" },
+              { label: "Newsletter",href: "#" },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="text-white/70 hover:text-white transition-colors w-fit"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "13px", letterSpacing: "0.06em" }}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
 
           {/* Centre — opening times */}
           <div className="flex flex-col items-center text-center">
@@ -141,7 +158,7 @@ export default function Home() {
               <p
                 key={days}
                 className="text-white/80 leading-[1.9]"
-                style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
+                style={{ fontFamily: "var(--font-mono)", fontSize: "13px" }}
               >
                 {days}: {time}
               </p>
@@ -151,11 +168,12 @@ export default function Home() {
           {/* Right — address */}
           <div
             className="hidden md:flex flex-col items-end text-right leading-[1.9]"
-            style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
+            style={{ fontFamily: "var(--font-mono)", fontSize: "13px" }}
           >
             <p className="text-white/80">15 Hockley</p>
             <p className="text-white/80">Nottingham, NG1 1FH</p>
           </div>
+
         </div>
       </section>
 
