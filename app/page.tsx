@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 
 /* ─── Data ─────────────────────────────────────────── */
 
@@ -74,16 +73,18 @@ export default function Home() {
             Menu
           </button>
 
-          {/* Logo — centred, overflow visible so nothing clips */}
-          <div className="absolute left-1/2 -translate-x-1/2" style={{ overflow: "visible" }}>
-            <Image
+          {/* Logo — plain img so nothing clips */}
+          <div className="absolute left-1/2 -translate-x-1/2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/logo.png"
               alt="Movers"
-              width={180}
-              height={64}
-              priority
-              className="invert"
-              style={{ objectFit: "contain", objectPosition: "center bottom" }}
+              style={{
+                height: "44px",
+                width: "auto",
+                filter: "invert(1)",
+                display: "block",
+              }}
             />
           </div>
 
@@ -335,13 +336,11 @@ export default function Home() {
       <footer className="bg-[#0a0a0a] text-white py-14 px-8 md:px-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/logo.png"
               alt="Movers"
-              width={120}
-              height={40}
-              className="invert mb-6"
-              style={{ objectFit: "contain" }}
+              style={{ height: "32px", width: "auto", filter: "invert(1)", display: "block", marginBottom: "1.5rem" }}
             />
             <p
               className="text-zinc-400 text-[13px] leading-relaxed"
