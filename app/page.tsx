@@ -60,7 +60,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/60 pointer-events-none z-[1]" />
 
         {/* ── Nav ── */}
-        <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-10 py-5">
+        <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 md:px-12 pt-7 pb-6">
           <button
             aria-label="Open menu"
             className="flex items-center gap-2.5 text-white uppercase tracking-[0.22em] text-[12px] hover:opacity-70 transition-opacity"
@@ -74,34 +74,35 @@ export default function Home() {
             Menu
           </button>
 
-          {/* Logo */}
-          <div className="absolute left-1/2 -translate-x-1/2">
+          {/* Logo — centred, overflow visible so nothing clips */}
+          <div className="absolute left-1/2 -translate-x-1/2" style={{ overflow: "visible" }}>
             <Image
               src="/logo.png"
               alt="Movers"
-              width={160}
-              height={52}
+              width={180}
+              height={64}
               priority
               className="invert"
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: "contain", objectPosition: "center bottom" }}
             />
           </div>
 
-          {/* Spacer to keep logo centred */}
+          {/* Spacer */}
           <div className="w-[80px]" />
         </nav>
 
         {/* ── Hero content ── */}
         <div
-          className="relative z-10 flex flex-col items-center justify-center text-center px-4"
-          style={{ height: "100%" }}
+          className="relative z-10 flex flex-col items-center justify-center text-center px-6 md:px-12"
+          style={{ height: "100%", paddingTop: "80px", paddingBottom: "100px" }}
         >
           <h1
-            className="text-white font-bold uppercase leading-[0.88] mb-8 md:mb-10"
+            className="text-white font-bold uppercase mb-12 md:mb-14"
             style={{
               fontFamily: "var(--font-primary)",
-              fontSize: "clamp(2.4rem, 7.5vw, 8.5rem)",
+              fontSize: "clamp(2.2rem, 6.5vw, 7.5rem)",
               letterSpacing: "-0.02em",
+              lineHeight: 0.9,
             }}
           >
             Daytime Cafe,
@@ -110,17 +111,17 @@ export default function Home() {
           </h1>
 
           {/* Anchor boxes */}
-          <div className="flex flex-row gap-3 md:gap-4 mb-10">
+          <div className="flex flex-row gap-4 md:gap-5">
             {(["Events", "Drinks", "Co-Working"] as const).map((label) => (
               <a
                 key={label}
                 href={`#${label.toLowerCase().replace(/[^a-z]/g, "")}`}
-                className="border border-white/80 text-white uppercase hover:bg-white hover:text-black transition-colors"
+                className="border border-white/70 text-white uppercase hover:bg-white hover:text-black transition-colors"
                 style={{
                   fontFamily: "var(--font-primary)",
-                  fontSize: "clamp(9px, 1.1vw, 12px)",
-                  letterSpacing: "0.18em",
-                  padding: "clamp(10px, 1.2vw, 14px) clamp(16px, 2.8vw, 38px)",
+                  fontSize: "11px",
+                  letterSpacing: "0.2em",
+                  padding: "13px 32px",
                 }}
               >
                 {label}
@@ -129,23 +130,17 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── Bottom strip ── */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 flex items-end justify-between px-6 md:px-10 pb-6 md:pb-8">
-          {/* Empty left column on mobile, address on desktop */}
-          <div
-            className="hidden md:block text-white text-right leading-[1.75] order-3"
-            style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
-          >
-            <p>15 Hockley</p>
-            <p>Nottingham, NG1 1FH</p>
-          </div>
+        {/* ── Bottom strip — 3-column grid ── */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 grid grid-cols-3 items-end px-8 md:px-12 pb-8 md:pb-10">
+          {/* Left — empty balancing column */}
+          <div />
 
-          {/* Opening times — centred */}
-          <div className="flex-1 flex flex-col items-center pb-1">
+          {/* Centre — opening times */}
+          <div className="flex flex-col items-center text-center">
             {HOURS.map(({ days, time }) => (
               <p
                 key={days}
-                className="text-white leading-[1.8]"
+                className="text-white/80 leading-[1.9]"
                 style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
               >
                 {days}: {time}
@@ -153,13 +148,13 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Address — right on desktop */}
+          {/* Right — address */}
           <div
-            className="hidden md:block text-white text-right leading-[1.75]"
+            className="hidden md:flex flex-col items-end text-right leading-[1.9]"
             style={{ fontFamily: "var(--font-mono)", fontSize: "11px" }}
           >
-            <p>15 Hockley</p>
-            <p>Nottingham, NG1 1FH</p>
+            <p className="text-white/80">15 Hockley</p>
+            <p className="text-white/80">Nottingham, NG1 1FH</p>
           </div>
         </div>
       </section>
@@ -167,8 +162,8 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           MENU / DRINKS
       ══════════════════════════════════════════════ */}
-      <section id="drinks" className="bg-white text-black py-20 md:py-32 overflow-hidden">
-        <div className="px-8 md:px-16 mb-12 md:mb-16">
+      <section id="drinks" className="bg-white text-black py-24 md:py-40 overflow-hidden">
+        <div className="px-8 md:px-20 mb-16 md:mb-20">
           <p
             className="uppercase tracking-[0.25em] text-[11px] mb-3 text-zinc-400"
             style={{ fontFamily: "var(--font-mono)" }}
@@ -188,7 +183,7 @@ export default function Home() {
         </div>
 
         {/* Two-column layout — text + 2 photos */}
-        <div className="px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
           <div className="md:pt-4">
             <p
               className="text-[16px] leading-relaxed text-zinc-700 max-w-md"
@@ -212,8 +207,8 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           EVENTS
       ══════════════════════════════════════════════ */}
-      <section id="events" className="bg-[#0a0a0a] text-white py-20 md:py-32 overflow-hidden">
-        <div className="px-8 md:px-16 mb-12 md:mb-16">
+      <section id="events" className="bg-[#0a0a0a] text-white py-24 md:py-40 overflow-hidden">
+        <div className="px-8 md:px-20 mb-16 md:mb-20">
           <p
             className="uppercase tracking-[0.25em] text-[11px] mb-3 text-zinc-400"
             style={{ fontFamily: "var(--font-mono)" }}
@@ -232,7 +227,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
           <div className="md:pt-4">
             <p
               className="text-[16px] leading-relaxed text-zinc-300 max-w-md"
@@ -257,8 +252,8 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           CO-WORKING
       ══════════════════════════════════════════════ */}
-      <section id="coworking" className="bg-white text-black py-20 md:py-32">
-        <div className="px-8 md:px-16 mb-12 md:mb-16">
+      <section id="coworking" className="bg-white text-black py-24 md:py-40">
+        <div className="px-8 md:px-20 mb-16 md:mb-20">
           <p
             className="uppercase tracking-[0.25em] text-[11px] mb-3 text-zinc-400"
             style={{ fontFamily: "var(--font-mono)" }}
@@ -277,7 +272,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
           <div className="md:pt-4">
             <p
               className="text-[16px] leading-relaxed text-zinc-700 mb-8 max-w-md"
@@ -319,7 +314,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           FOOTER
       ══════════════════════════════════════════════ */}
-      <footer className="bg-[#0a0a0a] text-white py-14 px-8 md:px-16">
+      <footer className="bg-[#0a0a0a] text-white py-14 px-8 md:px-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
             <Image
