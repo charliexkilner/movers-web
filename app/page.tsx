@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+const BG_IMAGES = ["bg-1.jpg", "bg-2.jpg", "bg-3.jpg", "bg-4.jpg"];
 
 /* ─── Data ─────────────────────────────────────────── */
 
@@ -24,6 +27,13 @@ function PhotoSlot({ label, className = "" }: { label: string; className?: strin
 /* ─── Page ──────────────────────────────────────────── */
 
 export default function Home() {
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setBgIndex(i => (i + 1) % BG_IMAGES.length), 3000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <>
       {/* ══════════════════════════════════════════════
@@ -34,11 +44,11 @@ export default function Home() {
         className="relative w-full"
         style={{ height: "100svh", minHeight: "560px", backgroundColor: "#0a0a0a", overflow: "hidden" }}
       >
-        {/* Background slideshow — add photos to /public/ */}
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-1.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-2.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-3.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-4.jpg')" }} />
+        {/* Background slideshow — instant cut every 3 s */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${BG_IMAGES[bgIndex]}')` }}
+        />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
@@ -191,7 +201,7 @@ export default function Home() {
             </h3>
             <p className="text-[16px] leading-relaxed text-zinc-600 max-w-sm"
               style={{ fontFamily: "var(--font-primary)" }}>
-              Movers late night Cafe is a <strong>speciality coffee-shop & listening cafe</strong> in Hockley serving expertly roasted local coffee, matcha, chai, iced-coffee, and freshly baked treats. Working with independent Nottingham bakeries, we bring together great coffee, quality sweet treats, and a welcoming space for the local community to <strong>co-work, meet, relax</strong> and even <strong>play board games</strong>.
+              Movers late night Cafe is a <strong>speciality coffee-shop & listening cafe</strong> in Hockley serving speciality coffee, expertly roasted down the road by Cartwheel Coffee local coffee, matcha, chai, iced-coffee, and freshly baked treats. Working with independent Nottingham bakeries, we bring together great coffee, quality sweet treats, and a welcoming space for the local community to <strong>co-work, meet, relax</strong> and even <strong>play board games</strong>. <br></br><br></br><strong>Catch daily cafe DJs, soundtracking your day with chilled cafe selections.</strong>
             </p>
           </div>
 
@@ -241,7 +251,7 @@ export default function Home() {
             </h3>
             <p className="text-[16px] leading-relaxed text-zinc-600 max-w-sm"
               style={{ fontFamily: "var(--font-primary)" }}>
-              Movers is a late night bar in Hockley, Nottingham serving <strong>ice cold German lagers</strong>, <strong>Guinness on draught</strong>, natural wine, spritz and cocktails. Whether you are joining us for after work drinks, a casual pint or a night out in Nottingham, our bar offers a relaxed space with great drinks and amazing music. Enjoy happy hour with <strong>£5 pints</strong> and <strong>£6.50 double serves</strong>, or ask our team for specials!
+              Movers is a late night bar in Hockley, Nottingham serving <strong>ice cold German lagers</strong>, <strong>Guinness on draught</strong>, specialist wine carafes, spritz and cocktails. Whether you are joining us for after work drinks, a casual pint or a night out in Nottingham, our bar offers a relaxed space with great drinks and amazing music. <br></br><br></br><strong>Enjoy happy hour with <strong>£5 pints</strong> and <strong>£6.50 double spritz</strong>, or ask our team for specials!</strong>
             </p>
           </div>
         </div>
