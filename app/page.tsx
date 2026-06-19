@@ -380,15 +380,15 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           FOOTER — 1001-inspired
       ══════════════════════════════════════════════ */}
-      <footer className="bg-[#0a0a0a] text-white">
+      <footer className="bg-[#0a0a0a] text-white" style={{ padding: "3rem 1.5rem 1.5rem" }}>
 
         {/* ── Top info row ── */}
-        <div className="px-8 md:px-20 pt-20 md:pt-32 pb-16 md:pb-24
-          grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0"
+          style={{ paddingBottom: "2.5rem" }}>
 
           {/* Left: logo + tagline */}
-          <div className="flex flex-col gap-6
-            md:pr-16 md:border-r md:border-white/10">
+          <div className="flex flex-col gap-6 md:pr-16 md:border-r md:border-white/10"
+            style={{ paddingBottom: "1rem" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo.png"
@@ -411,11 +411,11 @@ export default function Home() {
           </div>
 
           {/* Right: hours + location */}
-          <div className="md:pl-16 grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 gap-8 md:gap-10" style={{ paddingTop: "0.5rem" }}>
 
             {/* Opening hours */}
             <div>
-              <p className="uppercase tracking-[0.22em] text-[16px] mb-5 text-zinc-500"
+              <p className="uppercase tracking-[0.22em] text-[10px] mb-5 text-zinc-500"
                 style={{ fontFamily: "var(--font-mono)" }}>
                 Opening Hours
               </p>
@@ -445,8 +445,8 @@ export default function Home() {
         </div>
 
         {/* ── Newsletter + social ── */}
-        <div className="px-8 md:px-20 py-12 md:py-16 border-t border-white/[0.07]
-          flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+        <div className="border-t border-white/[0.07] flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12"
+          style={{ padding: "2rem 0" }}>
 
           {/* Newsletter box — same style as hero anchor boxes */}
           <a
@@ -479,7 +479,7 @@ export default function Home() {
         </div>
 
         {/* ── Copyright ── */}
-        <div className="px-8 md:px-20 py-8 border-t border-white/[0.07]">
+        <div className="border-t border-white/[0.07]" style={{ paddingTop: "1.5rem", paddingBottom: "1rem" }}>
           <p className="text-zinc-500 text-[11px]"
             style={{ fontFamily: "var(--font-mono)" }}>
             © 2026 Movers.
