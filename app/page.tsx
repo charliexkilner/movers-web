@@ -1,8 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-const BG_IMAGES = ["bg-1.jpg", "bg-2.jpg", "bg-3.jpg", "bg-4.jpg"];
 
 /* ─── Data ─────────────────────────────────────────── */
 
@@ -27,12 +24,6 @@ function PhotoSlot({ label, className = "" }: { label: string; className?: strin
 /* ─── Page ──────────────────────────────────────────── */
 
 export default function Home() {
-  const [bgIndex, setBgIndex] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setBgIndex(i => (i + 1) % BG_IMAGES.length), 3000);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <>
       {/* ══════════════════════════════════════════════
@@ -43,14 +34,11 @@ export default function Home() {
         className="relative w-full"
         style={{ height: "100svh", minHeight: "560px", backgroundColor: "#0a0a0a", overflow: "hidden" }}
       >
-        {/* Background slideshow — all images in DOM so they preload; only z-index changes */}
-        {BG_IMAGES.map((src, i) => (
-          <div
-            key={src}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('/${src}')`, zIndex: i === bgIndex ? 1 : 0 }}
-          />
-        ))}
+        {/* Background slideshow — add photos to /public/ */}
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-1.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-2.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-3.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-4.jpg')" }} />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
@@ -89,9 +77,9 @@ export default function Home() {
           style={{ height: "100%", paddingTop: "100px", paddingBottom: "140px" }}
         >
           <h1
-            className="text-white font-bold uppercase"
+            className="text-white uppercase"
             style={{
-              fontFamily: "var(--font-primary)",
+              fontFamily: "var(--font-display)",
               fontSize: "clamp(2.2rem, 6.5vw, 7.5rem)",
               letterSpacing: "-0.02em",
               lineHeight: 0.9,
@@ -203,7 +191,11 @@ export default function Home() {
             </h3>
             <p className="text-[16px] leading-relaxed text-zinc-600 max-w-sm"
               style={{ fontFamily: "var(--font-primary)" }}>
-              Movers late night Cafe is a <strong>speciality coffee-shop & listening cafe</strong> in Hockley serving speciality coffee & sweet treats expertly crafted down the road by Cartwheel Coffee Roastery. We bring together great coffee, quality sweet treats, and a welcoming space for the local creative community to <strong>co-work, meet, relax</strong> and even <strong>play board games</strong>. <br></br><br></br><strong>Catch daily cafe DJs, soundtracking your day with chilled cafe selections.</strong>
+              Movers late night Cafe is a <strong>speciality coffee-shop & listening cafe</strong> in Hockley serving speciality coffee & sweet treats 
+              expertly crafted down the road by Cartwheel Coffee Roastery. We bring together great coffee, 
+              quality sweet treats, and a welcoming space for the local creative community to <strong>co-work,
+                meet, relax</strong> and even <strong>play board games</strong>. <br /><br />Catch daily cafe DJs soundtracking your day with chilled cafe selections —{" "}
+                <a href="https://www.swingdash.live" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>watch livestreamed sets here</a>.
             </p>
           </div>
 
@@ -292,6 +284,8 @@ export default function Home() {
               </p>
               <a
                 href="https://ra.co/clubs/262186"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-white text-white uppercase hover:bg-white hover:text-black transition-colors"
                 style={{
                   fontFamily: "var(--font-primary)",
@@ -345,6 +339,7 @@ export default function Home() {
                 "Free wifi",
                 "Plugs at every seat — USB-A, USB-C & UK sockets",
                 "£8 unlimited speciality batch brew from our barista team",
+                "Vintage clothing & streetwear shop"
               ].map((perk) => (
                 <li
                   key={perk}
@@ -380,15 +375,15 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           FOOTER — 1001-inspired
       ══════════════════════════════════════════════ */}
-      <footer className="bg-[#0a0a0a] text-white" style={{ padding: "3rem 1.5rem 1.5rem" }}>
+      <footer className="bg-[#0a0a0a] text-white" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
 
         {/* ── Top info row ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0"
-          style={{ paddingBottom: "2.5rem" }}>
+        <div className="px-8 md:px-20 pt-20 md:pt-32 pb-16 md:pb-24
+          grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0">
 
           {/* Left: logo + tagline */}
-          <div className="flex flex-col gap-6 md:pr-16 md:border-r md:border-white/10"
-            style={{ paddingBottom: "1rem" }}>
+          <div className="flex flex-col gap-6
+            md:pr-16 md:border-r md:border-white/10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo.png"
@@ -411,11 +406,11 @@ export default function Home() {
           </div>
 
           {/* Right: hours + location */}
-          <div className="grid grid-cols-2 gap-8 md:gap-10" style={{ paddingTop: "0.5rem" }}>
+          <div className="md:pl-16 grid grid-cols-1 md:grid-cols-2 gap-10" style={{paddingLeft: "40px"}}>
 
             {/* Opening hours */}
             <div>
-              <p className="uppercase tracking-[0.22em] text-[10px] mb-5 text-zinc-500"
+              <p className="uppercase tracking-[0.22em] text-[16px] mb-5 text-zinc-500"
                 style={{ fontFamily: "var(--font-mono)" }}>
                 Opening Hours
               </p>
@@ -445,8 +440,8 @@ export default function Home() {
         </div>
 
         {/* ── Newsletter + social ── */}
-        <div className="border-t border-white/[0.07] flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12"
-          style={{ padding: "2rem 0" }}>
+        <div className="px-8 md:px-20 py-12 md:py-16 border-t border-white/[0.07]
+          flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
 
           {/* Newsletter box — same style as hero anchor boxes */}
           <a
@@ -479,9 +474,9 @@ export default function Home() {
         </div>
 
         {/* ── Copyright ── */}
-        <div className="border-t border-white/[0.07]" style={{ paddingTop: "1.5rem", paddingBottom: "1rem" }}>
-          <p className="text-zinc-500 text-[11px]"
-            style={{ fontFamily: "var(--font-mono)" }}>
+        <div className="px-8 md:px-20 py-8 border-t border-white/[0.07]">
+          <p className="text-white text-[16px]"
+            style={{ fontFamily: "var(--font-mono)", paddingTop: "40px" }}>
             © 2026 Movers.
           </p>
         </div>

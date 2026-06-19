@@ -16,8 +16,17 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Dirty Luxe';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Dirty-Luxe.otf') format('opentype');
+  font-display: swap;
+}
+
 :root {
   --font-primary: 'Alte Haas Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Dirty Luxe', 'Alte Haas Grotesk', sans-serif;
   --font-mono: 'SF Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
 }
 
