@@ -41,6 +41,9 @@ export default function Home() {
         <div className="bg-slide" style={{ backgroundImage: "url('/bg-4.jpg')" }} />
         <div className="bg-slide" style={{ backgroundImage: "url('/bg-5.jpg')" }} />
         <div className="bg-slide" style={{ backgroundImage: "url('/bg-6.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-7.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-8.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-9.jpg')" }} />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />

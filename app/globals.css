@@ -59,7 +59,7 @@ body {
   inset: 0;
   background-size: cover;
   background-position: center;
-  animation: bgCut 18s linear infinite;
+  animation: bgCut 27s linear infinite;
   opacity: 0;
 }
 .bg-slide:nth-child(1) { animation-delay: 0s; }
@@ -68,12 +68,15 @@ body {
 .bg-slide:nth-child(4) { animation-delay: 9s; }
 .bg-slide:nth-child(5) { animation-delay: 12s; }
 .bg-slide:nth-child(6) { animation-delay: 15s; }
+.bg-slide:nth-child(7) { animation-delay: 18s; }
+.bg-slide:nth-child(8) { animation-delay: 21s; }
+.bg-slide:nth-child(9) { animation-delay: 24s; }
 
 @keyframes bgCut {
-  0%        { opacity: 0; }
-  0.01%     { opacity: 1; }
-  16.66%    { opacity: 1; }
-  16.67%    { opacity: 0; }
-  100%      { opacity: 0; }
+  0%       { opacity: 0; }
+  0.01%    { opacity: 1; }
+  11.10%   { opacity: 1; }
+  11.11%   { opacity: 0; }
+  100%     { opacity: 0; }
 }
 
