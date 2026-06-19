@@ -92,17 +92,47 @@ export default function Home() {
           </h1>
      
 
-          <div className="flex flex-row gap-4 md:gap-5">
-            {(["Events", "Drinks", "Co-Working"] as const).map((label) => (
+          {/* Desktop: single row of 4 buttons */}
+          <div className="hidden md:flex flex-row gap-5">
+            {([
+              { label: "Coffee",     href: "#cafe" },
+              { label: "Bar",        href: "#bar" },
+              { label: "Music",      href: "#events" },
+              { label: "Co-Working", href: "#coworking" },
+            ] as const).map(({ label, href }) => (
               <a
                 key={label}
-                href={`#${label.toLowerCase().replace(/[^a-z]/g, "")}`}
+                href={href}
                 className="border border-white/70 text-white uppercase hover:bg-white hover:text-black transition-colors"
                 style={{
                   fontFamily: "var(--font-primary)",
                   fontSize: "13px",
                   letterSpacing: "0.2em",
                   padding: "15px 36px",
+                }}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile: 2×2 grid */}
+          <div className="grid grid-cols-2 gap-3 md:hidden">
+            {([
+              { label: "Coffee",     href: "#cafe" },
+              { label: "Bar",        href: "#bar" },
+              { label: "Music",      href: "#events" },
+              { label: "Co-Working", href: "#coworking" },
+            ] as const).map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="border border-white/70 text-white uppercase hover:bg-white hover:text-black transition-colors text-center"
+                style={{
+                  fontFamily: "var(--font-primary)",
+                  fontSize: "13px",
+                  letterSpacing: "0.2em",
+                  padding: "15px 20px",
                 }}
               >
                 {label}
@@ -179,7 +209,7 @@ export default function Home() {
         </div>
 
         {/* ── Row 1: CAFE — text left, photo right ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 items-stretch border-t border-zinc-100">
+        <div id="cafe" className="grid grid-cols-1 md:grid-cols-2 items-stretch border-t border-zinc-100">
 
           <div className="px-8 md:px-20 py-16 md:py-24 flex flex-col justify-center" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
             <h3 className="font-bold uppercase mb-6"
@@ -213,7 +243,7 @@ export default function Home() {
         </div>
 
         {/* ── Row 2: DRINKS — photo left, text right ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 items-stretch border-t border-zinc-100">
+        <div id="bar" className="grid grid-cols-1 md:grid-cols-2 items-stretch border-t border-zinc-100">
 
           {/* Photos — stacked with second one offset like 1001 */}
           <div className="relative flex flex-col">
