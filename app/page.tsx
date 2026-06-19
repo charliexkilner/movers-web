@@ -39,6 +39,8 @@ export default function Home() {
         <div className="bg-slide" style={{ backgroundImage: "url('/bg-2.jpg')" }} />
         <div className="bg-slide" style={{ backgroundImage: "url('/bg-3.jpg')" }} />
         <div className="bg-slide" style={{ backgroundImage: "url('/bg-4.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-5.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-6.jpg')" }} />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
@@ -247,9 +249,12 @@ export default function Home() {
 
           {/* Photos — stacked with second one offset like 1001 */}
           <div className="relative flex flex-col">
-            <PhotoSlot
-              label="photo: pints — add /public/menu-pints.jpg"
-              className="min-h-[320px] flex-1"
+            <img
+              src="/menu-pints.jpg"
+              alt="Pints at Movers bar"
+              className="object-cover w-full min-h-[320px] flex-1"
+              style={{ objectPosition: "center" }}
+              loading="lazy"
             />
             {/* Second photo overlaps, offset right */}
             <div className="hidden md:block md:absolute md:bottom-0 md:right-0 md:w-[58%] md:translate-y-[30%] md:z-10 shadow-xl">
@@ -258,11 +263,6 @@ export default function Home() {
                 className="aspect-[4/3]"
               />
             </div>
-            {/* Mobile: just stacked */}
-            <PhotoSlot
-              label="photo: cocktail — add /public/menu-cocktail.jpg"
-              className="md:hidden min-h-[280px]"
-            />
           </div>
 
           <div className="px-8 md:px-20 py-16 md:py-24 md:pb-40 flex flex-col justify-center" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
@@ -334,7 +334,13 @@ export default function Home() {
      
           </div>
           <div className="flex flex-col gap-4">
-            <PhotoSlot label="photo: crowd — add /public/events-crowd-1.jpg" className="aspect-[4/3]" />
+            <img
+              src="/events-crowd-1.jpg"
+              alt="Crowd at Movers"
+              className="object-cover w-full aspect-[4/3]"
+              style={{ objectPosition: "center" }}
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
