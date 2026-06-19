@@ -77,7 +77,7 @@ export default function Home() {
           style={{ height: "100%", paddingTop: "100px", paddingBottom: "140px" }}
         >
           <h1
-            className="text-white uppercase"
+            className="text-white"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2.2rem, 6.5vw, 7.5rem)",
@@ -88,7 +88,7 @@ export default function Home() {
           >
             Daytime Cafe,
             <br />
-            Late Night Dancing.
+            Late night dancing.
           </h1>
 
           <div className="flex flex-row gap-4 md:gap-5">
