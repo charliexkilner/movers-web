@@ -35,10 +35,10 @@ export default function Home() {
         style={{ height: "100svh", minHeight: "560px", backgroundColor: "#0a0a0a", overflow: "hidden" }}
       >
         {/* Background slideshow — add photos to /public/ */}
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-1.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-2.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-3.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('bg-4.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-1.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-2.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-3.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-4.jpg')" }} />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
@@ -80,16 +80,17 @@ export default function Home() {
             className="text-white"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.2rem, 6.5vw, 7.5rem)",
+              fontSize: "clamp(2rem, 5.7vw, 6.5rem)", // slightly smaller than before
               letterSpacing: "-0.02em",
               lineHeight: 0.9,
-              marginBottom: "clamp(3rem, 5vw, 5.5rem)",
+              marginBottom: "clamp(2.5rem, 4.3vw, 4.7rem)", // slightly smaller than before
             }}
           >
-            Daytime Cafe,
+            Daytime Cafe
             <br />
-            Late night dancing.
+            Late night dancing
           </h1>
+     
 
           <div className="flex flex-row gap-4 md:gap-5">
             {(["Events", "Drinks", "Co-Working"] as const).map((label) => (
@@ -375,15 +376,15 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           FOOTER — 1001-inspired
       ══════════════════════════════════════════════ */}
-      <footer className="bg-[#0a0a0a] text-white" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
+      <footer className="bg-[#0a0a0a] text-white" style={{ padding: "2.5rem 1.5rem 1.5rem" }}>
 
         {/* ── Top info row ── */}
-        <div className="px-8 md:px-20 pt-20 md:pt-32 pb-16 md:pb-24
-          grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0"
+          style={{ paddingBottom: "2rem" }}>
 
           {/* Left: logo + tagline */}
-          <div className="flex flex-col gap-6
-            md:pr-16 md:border-r md:border-white/10">
+          <div className="flex flex-col gap-4 md:pr-16 md:border-r md:border-white/10"
+            style={{ paddingBottom: "0.5rem" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo.png"
@@ -406,11 +407,11 @@ export default function Home() {
           </div>
 
           {/* Right: hours + location */}
-          <div className="md:pl-16 grid grid-cols-1 md:grid-cols-2 gap-10" style={{paddingLeft: "40px"}}>
+          <div className="grid grid-cols-2 gap-8 md:pl-16" style={{ paddingTop: "0.25rem" }}>
 
             {/* Opening hours */}
             <div>
-              <p className="uppercase tracking-[0.22em] text-[16px] mb-5 text-zinc-500"
+              <p className="uppercase tracking-[0.22em] text-[10px] mb-4 text-zinc-500"
                 style={{ fontFamily: "var(--font-mono)" }}>
                 Opening Hours
               </p>
@@ -425,7 +426,7 @@ export default function Home() {
 
             {/* Location */}
             <div>
-              <p className="uppercase tracking-[0.22em] text-[16px] mb-5 text-zinc-500"
+              <p className="uppercase tracking-[0.22em] text-[10px] mb-4 text-zinc-500"
                 style={{ fontFamily: "var(--font-mono)" }}>
                 Location
               </p>
@@ -440,8 +441,8 @@ export default function Home() {
         </div>
 
         {/* ── Newsletter + social ── */}
-        <div className="px-8 md:px-20 py-12 md:py-16 border-t border-white/[0.07]
-          flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+        <div className="border-t border-white/[0.07] flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12"
+          style={{ padding: "1.75rem 0" }}>
 
           {/* Newsletter box — same style as hero anchor boxes */}
           <a
@@ -474,7 +475,7 @@ export default function Home() {
         </div>
 
         {/* ── Copyright ── */}
-        <div className="px-8 md:px-20 py-8 border-t border-white/[0.07]">
+        <div className="border-t border-white/[0.07]" style={{ paddingTop: "1.25rem", paddingBottom: "0.5rem" }}>
           <p className="text-white text-[16px]"
             style={{ fontFamily: "var(--font-mono)", paddingTop: "40px" }}>
             © 2026 Movers.
