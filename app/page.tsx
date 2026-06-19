@@ -261,9 +261,12 @@ export default function Home() {
             />
             {/* Second photo overlaps, offset right */}
             <div className="hidden md:block md:absolute md:bottom-0 md:right-0 md:w-[58%] md:translate-y-[30%] md:z-10 shadow-xl">
-              <PhotoSlot
-                label="photo: cocktail — add /public/menu-cocktail.jpg"
-                className="aspect-[4/3]"
+              <img
+                src="/menu-cocktail.jpg"
+                alt="Cocktails at Movers bar"
+                className="object-cover w-full aspect-[4/3]"
+                style={{ objectPosition: "center" }}
+                loading="lazy"
               />
             </div>
           </div>
@@ -407,7 +410,13 @@ export default function Home() {
       
           </div>
           <div className="flex flex-col gap-4">
-            <PhotoSlot label="photo: atrium — add /public/cowork-atrium.jpg" className="aspect-[4/3]" />
+            <img
+              src="/cowork-atrium.jpg"
+              alt="Co-working space at Movers"
+              className="object-cover w-full aspect-[4/3]"
+              style={{ objectPosition: "center" }}
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
