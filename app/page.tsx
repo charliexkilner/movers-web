@@ -28,7 +28,6 @@ function PhotoSlot({ label, className = "" }: { label: string; className?: strin
 
 export default function Home() {
   const [bgIndex, setBgIndex] = useState(0);
-
   useEffect(() => {
     const id = setInterval(() => setBgIndex(i => (i + 1) % BG_IMAGES.length), 3000);
     return () => clearInterval(id);
@@ -44,11 +43,14 @@ export default function Home() {
         className="relative w-full"
         style={{ height: "100svh", minHeight: "560px", backgroundColor: "#0a0a0a", overflow: "hidden" }}
       >
-        {/* Background slideshow — instant cut every 3 s */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${BG_IMAGES[bgIndex]}')` }}
-        />
+        {/* Background slideshow — all images in DOM so they preload; only z-index changes */}
+        {BG_IMAGES.map((src, i) => (
+          <div
+            key={src}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('/${src}')`, zIndex: i === bgIndex ? 1 : 0 }}
+          />
+        ))}
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
@@ -201,7 +203,7 @@ export default function Home() {
             </h3>
             <p className="text-[16px] leading-relaxed text-zinc-600 max-w-sm"
               style={{ fontFamily: "var(--font-primary)" }}>
-              Movers late night Cafe is a <strong>speciality coffee-shop & listening cafe</strong> in Hockley serving speciality coffee, expertly roasted down the road by Cartwheel Coffee local coffee, matcha, chai, iced-coffee, and freshly baked treats. Working with independent Nottingham bakeries, we bring together great coffee, quality sweet treats, and a welcoming space for the local community to <strong>co-work, meet, relax</strong> and even <strong>play board games</strong>. <br></br><br></br><strong>Catch daily cafe DJs, soundtracking your day with chilled cafe selections.</strong>
+              Movers late night Cafe is a <strong>speciality coffee-shop & listening cafe</strong> in Hockley serving speciality coffee & sweet treats expertly crafted down the road by Cartwheel Coffee Roastery. We bring together great coffee, quality sweet treats, and a welcoming space for the local creative community to <strong>co-work, meet, relax</strong> and even <strong>play board games</strong>. <br></br><br></br><strong>Catch daily cafe DJs, soundtracking your day with chilled cafe selections.</strong>
             </p>
           </div>
 
@@ -378,7 +380,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           FOOTER — 1001-inspired
       ══════════════════════════════════════════════ */}
-      <footer className="bg-[#0a0a0a] text-white" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
+      <footer className="bg-[#0a0a0a] text-white">
 
         {/* ── Top info row ── */}
         <div className="px-8 md:px-20 pt-20 md:pt-32 pb-16 md:pb-24
@@ -409,7 +411,7 @@ export default function Home() {
           </div>
 
           {/* Right: hours + location */}
-          <div className="md:pl-16 grid grid-cols-1 md:grid-cols-2 gap-10" style={{paddingLeft: "40px"}}>
+          <div className="md:pl-16 grid grid-cols-2 gap-10">
 
             {/* Opening hours */}
             <div>
@@ -478,8 +480,8 @@ export default function Home() {
 
         {/* ── Copyright ── */}
         <div className="px-8 md:px-20 py-8 border-t border-white/[0.07]">
-          <p className="text-white text-[16px]"
-            style={{ fontFamily: "var(--font-mono)", paddingTop: "40px" }}>
+          <p className="text-zinc-500 text-[11px]"
+            style={{ fontFamily: "var(--font-mono)" }}>
             © 2026 Movers.
           </p>
         </div>
