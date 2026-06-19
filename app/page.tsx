@@ -252,7 +252,7 @@ export default function Home() {
             <img
               src="/menu-pints.jpg"
               alt="Pints at Movers bar"
-              className="object-cover w-full min-h-[320px] flex-1"
+              className="object-cover w-full max-h-[320px] md:max-h-[480px]"
               style={{ objectPosition: "center" }}
               loading="lazy"
             />
