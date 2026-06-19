@@ -35,10 +35,10 @@ export default function Home() {
         style={{ height: "100svh", minHeight: "560px", backgroundColor: "#0a0a0a", overflow: "hidden" }}
       >
         {/* Background slideshow — add photos to /public/ */}
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-atrium.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-coffee.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-pints.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-cake.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-1.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-2.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-3.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('bg-4.jpg')" }} />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
@@ -47,22 +47,8 @@ export default function Home() {
         <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 md:px-12"
           style={{ paddingTop: "28px", paddingBottom: "20px" }}>
 
-          {/* Hamburger — mobile only */}
-          <button
-            aria-label="Open menu"
-            className="md:hidden flex items-center gap-2.5 text-white uppercase tracking-[0.22em] text-[12px] hover:opacity-70 transition-opacity"
-            style={{ fontFamily: "var(--font-primary)" }}
-          >
-            <svg width="20" height="13" viewBox="0 0 20 13" fill="none" aria-hidden="true">
-              <line y1="0.75"  x2="20" y2="0.75"  stroke="white" strokeWidth="1.5" />
-              <line y1="6.25"  x2="20" y2="6.25"  stroke="white" strokeWidth="1.5" />
-              <line y1="11.75" x2="20" y2="11.75" stroke="white" strokeWidth="1.5" />
-            </svg>
-            Menu
-          </button>
-
-          {/* Desktop left spacer */}
-          <div className="hidden md:block w-20" />
+          {/* Left spacer */}
+          <div className="w-20" />
 
           {/* Logo centred — mix-blend screen removes the white background box */}
           <div className="absolute left-1/2 -translate-x-1/2 py-1">
@@ -70,12 +56,13 @@ export default function Home() {
             <img
               src="/logo.png"
               alt="Movers"
+              className="h-[48px] md:h-[56px]"
               style={{
-                height: "58px",
                 width: "auto",
                 display: "block",
                 filter: "invert(1)",
                 mixBlendMode: "screen",
+                paddingTop: "16px",
               }}
             />
           </div>
@@ -101,7 +88,7 @@ export default function Home() {
           >
             Daytime Cafe,
             <br />
-            Late Night Dancing
+            Late Night Dancing.
           </h1>
 
           <div className="flex flex-row gap-4 md:gap-5">
@@ -124,7 +111,8 @@ export default function Home() {
         </div>
 
         {/* ── Bottom strip — desktop ── */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:grid grid-cols-3 items-end px-12 pb-14">
+        <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:grid grid-cols-3 items-end px-4 md:px-32" style={{ paddingBottom: "24px" }}>
+   
           <div className="flex flex-col gap-[10px]">
             {[
               { label: "Instagram", href: "#" },
@@ -133,7 +121,7 @@ export default function Home() {
             ].map(({ label, href }) => (
               <a key={label} href={href}
                 className="text-white/70 hover:text-white transition-colors w-fit"
-                style={{ fontFamily: "var(--font-mono)", fontSize: "14px", letterSpacing: "0.06em" }}
+                style={{ fontFamily: "var(--font-mono)", fontSize: "14px", letterSpacing: "0.06em", paddingLeft: "40px"}}
               >
                 {label}
               </a>
@@ -148,13 +136,13 @@ export default function Home() {
             ))}
           </div>
           <div className="flex flex-col items-end text-right">
-            <p className="text-white/80" style={{ fontFamily: "var(--font-mono)", fontSize: "14px", lineHeight: "2.2" }}>15 Hockley</p>
-            <p className="text-white/80" style={{ fontFamily: "var(--font-mono)", fontSize: "14px", lineHeight: "2.2" }}>Nottingham, NG1 1FH</p>
+            <p className="text-white/80" style={{ fontFamily: "var(--font-mono)", fontSize: "14px", lineHeight: "2.2", paddingRight: "40px" }}>15 Hockley</p>
+            <p className="text-white/80" style={{ fontFamily: "var(--font-mono)", fontSize: "14px", lineHeight: "2.2", paddingRight: "40px" }}>Nottingham, NG1 1FH</p>
           </div>
         </div>
 
         {/* ── Bottom strip — mobile ── */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 flex md:hidden flex-col items-center pb-12 px-6">
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex md:hidden flex-col items-center px-8" style={{ paddingBottom: "24px" }}>
           {HOURS.map(({ days, time }) => (
             <p key={days} className="text-white/80"
               style={{ fontFamily: "var(--font-mono)", fontSize: "14px", lineHeight: "2.1" }}>
@@ -173,9 +161,9 @@ export default function Home() {
       <section id="drinks" className="bg-white text-black">
 
         {/* Section label */}
-        <div className="px-8 md:px-20 pt-24 md:pt-36 pb-14 md:pb-20">
-          <p className="uppercase tracking-[0.28em] text-[10px] mb-4 text-zinc-400"
-            style={{ fontFamily: "var(--font-mono)" }}>
+        <div className="px-8 md:px-20 pt-24 md:pt-36 pb-14 md:pb-20" style={{paddingTop: "40px", paddingBottom: "40px", paddingLeft: "40px"}}>
+          <p className="uppercase tracking-[0.28em] text-[16px] mb-4 text-zinc-400"
+            style={{ fontFamily: "var(--font-mono)", paddingRight: "72px"}}>
             Cafe &amp; Bar
           </p>
           <h2 className="font-bold uppercase leading-none"
@@ -183,6 +171,7 @@ export default function Home() {
               fontFamily: "var(--font-primary)",
               fontSize: "clamp(2rem, 5vw, 5rem)",
               letterSpacing: "-0.02em",
+              paddingRight: "40px",
             }}>
             Menu
           </h2>
@@ -191,7 +180,7 @@ export default function Home() {
         {/* ── Row 1: CAFE — text left, photo right ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 items-stretch border-t border-zinc-100">
 
-          <div className="px-8 md:px-20 py-16 md:py-24 flex flex-col justify-center">
+          <div className="px-8 md:px-20 py-16 md:py-24 flex flex-col justify-center" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
             <h3 className="font-bold uppercase mb-6"
               style={{
                 fontFamily: "var(--font-primary)",
@@ -202,16 +191,20 @@ export default function Home() {
             </h3>
             <p className="text-[16px] leading-relaxed text-zinc-600 max-w-sm"
               style={{ fontFamily: "var(--font-primary)" }}>
-              Speciality coffee from local Nottingham roasters, matcha, chai and seasonal
-              drinks. We work with brilliant local bakeries for cakes, pastries and
-              sweet treats every day.
+              Movers late night Cafe is a <strong>speciality coffee-shop & listening cafe</strong> in Hockley serving expertly roasted local coffee, matcha, chai, iced-coffee, and freshly baked treats. Working with independent Nottingham bakeries, we bring together great coffee, quality sweet treats, and a welcoming space for the local community to <strong>co-work, meet, relax</strong> and even <strong>play board games</strong>.
             </p>
           </div>
 
-          <PhotoSlot
-            label="photo: coffee / cafe — add /public/menu-cafe.jpg"
-            className="min-h-[320px] md:min-h-[480px]"
-          />
+          <div className="max-h-[320px] md:max-h-[480px] w-full relative">
+            <img
+              src="/menu-cafe.jpg"
+              alt="Coffee and cafe drinks at Movers"
+              className="object-cover w-full h-full shadow-sm"
+              style={{ objectPosition: "center" }}
+              loading="lazy"
+            />
+          </div>
+    
         </div>
 
         {/* ── Row 2: DRINKS — photo left, text right ── */}
@@ -237,19 +230,18 @@ export default function Home() {
             />
           </div>
 
-          <div className="px-8 md:px-20 py-16 md:py-24 md:pb-40 flex flex-col justify-center">
+          <div className="px-8 md:px-20 py-16 md:py-24 md:pb-40 flex flex-col justify-center" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
             <h3 className="font-bold uppercase mb-6"
               style={{
                 fontFamily: "var(--font-primary)",
                 fontSize: "clamp(1.6rem, 3vw, 3rem)",
                 letterSpacing: "-0.02em",
               }}>
-              Drinks
+              Bar
             </h3>
             <p className="text-[16px] leading-relaxed text-zinc-600 max-w-sm"
               style={{ fontFamily: "var(--font-primary)" }}>
-              Ice cold pints of German lager, Guinness on draught and rotating craft
-              ales. Spritz, natural wine and cocktails. Ask our team what&apos;s pouring.
+              Movers is a late night bar in Hockley, Nottingham serving <strong>ice cold German lagers</strong>, <strong>Guinness on draught</strong>, natural wine, spritz and cocktails. Whether you are joining us for after work drinks, a casual pint or a night out in Nottingham, our bar offers a relaxed space with great drinks and amazing music. Enjoy happy hour with <strong>£5 pints</strong> and <strong>£6.50 double serves</strong>, or ask our team for specials!
             </p>
           </div>
         </div>
@@ -261,9 +253,10 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           EVENTS
       ══════════════════════════════════════════════ */}
-      <section id="events" className="bg-[#0a0a0a] text-white py-24 md:py-40 overflow-hidden">
+ 
+      <section id="events" className="bg-[#0a0a0a] text-white py-24 md:py-40 overflow-hidden" style={{paddingLeft: "40px", paddingRight: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
         <div className="px-8 md:px-20 mb-16 md:mb-20">
-          <p className="uppercase tracking-[0.25em] text-[10px] mb-4 text-zinc-500"
+          <p className="uppercase tracking-[0.25em] text-[16px] mb-4 text-zinc-500"
             style={{ fontFamily: "var(--font-mono)" }}>
             Late Night Dancing
           </p>
@@ -279,18 +272,32 @@ export default function Home() {
 
         <div className="px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
           <div className="md:pt-4">
-            <p className="text-[16px] leading-relaxed text-zinc-300 max-w-md"
-              style={{ fontFamily: "var(--font-primary)" }}>
-              Safe space late night dancing, LGBTQIA+ friendly, community of DJs and
-              promoter-led events. Livestreamed Eclectic Selector events — not just
-              dance music!
-            </p>
+            <div className="flex flex-col gap-10 items-start">
+              <p className="text-[16px] leading-relaxed text-zinc-300 max-w-md"
+                style={{ fontFamily: "var(--font-primary)"}}>
+                Movers is a home for DJs, selectors and music lovers in Nottingham. Our late night bar & events bring together local talent, headline artists and promoter-led parties across <strong>dance music, electronic,
+                disco, soul, RNB, funk and everything in between</strong>. With <strong>vinyl DJs</strong>, carefully curated lineups, live streams and a focus on creating a <strong>safe and inclusive dancefloor</strong>, <strong>Movers is a space where everyone can discover new music and share the experience together</strong>.
+              </p>
+              <a
+                href="https://ra.co/clubs/262186"
+                className="border border-white text-white uppercase hover:bg-white hover:text-black transition-colors"
+                style={{
+                  fontFamily: "var(--font-primary)",
+                  fontSize: "12px",
+                  letterSpacing: "0.24em",
+                  padding: "14px 40px",
+                  display: "inline-block",
+                }}
+              >
+                EVENT TICKETS & MORE INFO
+              </a>
+            </div>
+         
+       
+     
           </div>
           <div className="flex flex-col gap-4">
             <PhotoSlot label="photo: crowd — add /public/events-crowd-1.jpg" className="aspect-[4/3]" />
-            <div className="md:ml-8">
-              <PhotoSlot label="photo: crowd — add /public/events-crowd-2.jpg" className="aspect-[4/3]" />
-            </div>
           </div>
         </div>
       </section>
@@ -298,9 +305,9 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           CO-WORKING
       ══════════════════════════════════════════════ */}
-      <section id="coworking" className="bg-white text-black py-24 md:py-40">
+      <section id="coworking" className="bg-white text-black py-24 md:py-40" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
         <div className="px-8 md:px-20 mb-16 md:mb-20">
-          <p className="uppercase tracking-[0.25em] text-[10px] mb-4 text-zinc-400"
+          <p className="uppercase tracking-[0.25em] text-[16px] mb-4 text-zinc-400"
             style={{ fontFamily: "var(--font-mono)" }}>
             Third Space
           </p>
@@ -317,30 +324,43 @@ export default function Home() {
         <div className="px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
           <div className="md:pt-4">
             <p className="text-[16px] leading-relaxed text-zinc-700 mb-8 max-w-md"
-              style={{ fontFamily: "var(--font-primary)" }}>
-              Not just a space for music — enjoy the peace and quiet of our dedicated
-              atrium working space, lashings of natural daylight and speciality coffee.
+              style={{ fontFamily: "var(--font-primary)", paddingBottom: "40px" }}>
+         
+              Enjoy our dedicated atrium workspace with peaceful surroundings, natural daylight, reliable free WiFi and speciality coffee from our barista team. With power sockets at every seat, including USB-A, USB-C and UK plugs, Movers is the perfect cafe to work, study, meet or spend the day getting things done.
             </p>
-            <ul className="space-y-4 mb-10">
+            <ul className="mb-10 flex flex-col gap-2 md:gap-3">
               {[
                 "Free wifi",
                 "Plugs at every seat — USB-A, USB-C & UK sockets",
                 "£8 unlimited speciality batch brew from our barista team",
               ].map((perk) => (
-                <li key={perk}
-                  className="flex items-start gap-4 text-[14px] text-zinc-700 leading-snug"
-                  style={{ fontFamily: "var(--font-primary)" }}>
-                  <span className="mt-[7px] w-1 h-1 rounded-full bg-black inline-block flex-shrink-0" />
-                  {perk}
+                <li
+                  key={perk}
+                  className="flex items-center gap-3 text-[15px] md:text-[16px] text-zinc-800 dark:text-zinc-100 font-normal tracking-tight"
+                  style={{
+                    fontFamily: "var(--font-primary)",
+                    background: "rgba(246,246,248,0.75)",
+                    borderRadius: "10px",
+                    padding: "10px 18px",
+                    boxShadow: "0 1px 6px 0 rgba(12,12,18,0.04)",
+                    color: "black",
+                  }}
+                >
+                  <span
+                    className="w-2 h-2 rounded-full flex-shrink-0 bg-zinc-900 dark:bg-white border-2 border-zinc-300 mr-3"
+                    style={{
+                      display: "inline-block",
+                      marginRight: "14px"
+                    }}
+                  />
+                  <span className="relative top-[1px]">{perk}</span>
                 </li>
               ))}
             </ul>
+      
           </div>
           <div className="flex flex-col gap-4">
             <PhotoSlot label="photo: atrium — add /public/cowork-atrium.jpg" className="aspect-[4/3]" />
-            <div className="md:ml-8">
-              <PhotoSlot label="photo: laptop + coffee — add /public/cowork-laptop.jpg" className="aspect-[4/3]" />
-            </div>
           </div>
         </div>
       </section>
@@ -348,10 +368,10 @@ export default function Home() {
       {/* ══════════════════════════════════════════════
           FOOTER — 1001-inspired
       ══════════════════════════════════════════════ */}
-      <footer className="bg-[#0a0a0a] text-white">
+      <footer className="bg-[#0a0a0a] text-white" style={{paddingLeft: "40px", paddingTop: "40px", paddingBottom: "40px"}}>
 
         {/* ── Top info row ── */}
-        <div className="px-8 md:px-20 pt-16 md:pt-24 pb-14 md:pb-16
+        <div className="px-8 md:px-20 pt-20 md:pt-32 pb-16 md:pb-24
           grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-0">
 
           {/* Left: logo + tagline */}
@@ -365,12 +385,13 @@ export default function Home() {
                 height: "40px",
                 width: "auto",
                 display: "block",
+                alignSelf: "flex-start",
                 filter: "invert(1)",
                 mixBlendMode: "screen",
               }}
             />
             <p className="text-zinc-400 text-[14px] leading-relaxed max-w-[220px]"
-              style={{ fontFamily: "var(--font-primary)" }}>
+              style={{ fontFamily: "var(--font-primary)", paddingBottom: "40px" }}>
               Nottingham&apos;s Listening Cafe,<br />
               late night bar &amp; community<br />
               third space.
@@ -378,11 +399,11 @@ export default function Home() {
           </div>
 
           {/* Right: hours + location */}
-          <div className="md:pl-16 grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="md:pl-16 grid grid-cols-1 md:grid-cols-2 gap-10" style={{paddingLeft: "40px"}}>
 
             {/* Opening hours */}
             <div>
-              <p className="uppercase tracking-[0.22em] text-[10px] mb-5 text-zinc-500"
+              <p className="uppercase tracking-[0.22em] text-[16px] mb-5 text-zinc-500"
                 style={{ fontFamily: "var(--font-mono)" }}>
                 Opening Hours
               </p>
@@ -390,14 +411,14 @@ export default function Home() {
                 <p key={days} className="text-zinc-300"
                   style={{ fontFamily: "var(--font-mono)", fontSize: "13px", lineHeight: "2.1" }}>
                   {days}<br />
-                  <span className="text-zinc-500">{time}</span>
+                  <span className="text-white">{time}</span>
                 </p>
               ))}
             </div>
 
             {/* Location */}
             <div>
-              <p className="uppercase tracking-[0.22em] text-[10px] mb-5 text-zinc-500"
+              <p className="uppercase tracking-[0.22em] text-[16px] mb-5 text-zinc-500"
                 style={{ fontFamily: "var(--font-mono)" }}>
                 Location
               </p>
@@ -412,18 +433,18 @@ export default function Home() {
         </div>
 
         {/* ── Newsletter + social ── */}
-        <div className="px-8 md:px-20 py-10 md:py-12 border-t border-white/[0.07]
+        <div className="px-8 md:px-20 py-12 md:py-16 border-t border-white/[0.07]
           flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
 
           {/* Newsletter box — same style as hero anchor boxes */}
           <a
             href="#"
-            className="border border-white/50 text-white uppercase hover:bg-white hover:text-black transition-colors"
+            className="border border-white text-white uppercase hover:bg-white hover:text-black transition-colors"
             style={{
               fontFamily: "var(--font-primary)",
               fontSize: "12px",
               letterSpacing: "0.24em",
-              padding: "14px 30px",
+              padding: "14px 40px",
               display: "inline-block",
             }}
           >
@@ -433,11 +454,11 @@ export default function Home() {
           {/* Social */}
           <div className="flex gap-8">
             {[
-              { label: "Instagram", href: "#" },
-              { label: "RA",        href: "#" },
+              { label: "Instagram", href: "https://www.instagram.com/movers.venue" },
+              { label: "RA",        href: "https://ra.co/clubs/262186" },
             ].map(({ label, href }) => (
               <a key={label} href={href}
-                className="text-zinc-500 hover:text-white transition-colors uppercase"
+                className="text-white hover:text-white transition-colors uppercase"
                 style={{ fontFamily: "var(--font-mono)", fontSize: "12px", letterSpacing: "0.14em" }}>
                 {label}
               </a>
@@ -447,9 +468,9 @@ export default function Home() {
 
         {/* ── Copyright ── */}
         <div className="px-8 md:px-20 py-8 border-t border-white/[0.07]">
-          <p className="text-zinc-700 text-[11px]"
-            style={{ fontFamily: "var(--font-mono)" }}>
-            © 2026 Movers
+          <p className="text-white text-[16px]"
+            style={{ fontFamily: "var(--font-mono)", paddingTop: "40px" }}>
+            © 2026 Movers.
           </p>
         </div>
 
