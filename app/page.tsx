@@ -35,15 +35,15 @@ export default function Home() {
         style={{ height: "100svh", minHeight: "560px", backgroundColor: "#0a0a0a", overflow: "hidden" }}
       >
         {/* Background slideshow — add photos to /public/ */}
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-1.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-2.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-3.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-4.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-5.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-6.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-7.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-8.jpg')" }} />
-        <div className="bg-slide" style={{ backgroundImage: "url('/bg-9.jpg')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-1.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-2.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-3.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-4.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-5.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-6.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-7.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-8.webp')" }} />
+        <div className="bg-slide" style={{ backgroundImage: "url('/bg-9.webp')" }} />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 pointer-events-none z-[1]" />
