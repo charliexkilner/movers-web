@@ -20,7 +20,7 @@
   font-family: 'Dirty Luxe';
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/Dirty-Luxe.otf') format('opentype');
+  src: url('/fonts/Dirty-Luxe.woff2') format('woff2');
   font-display: swap;
 }
 
