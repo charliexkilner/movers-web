@@ -280,7 +280,7 @@ export default function Home() {
             </h3>
             <p className="text-[16px] leading-relaxed text-zinc-600 max-w-sm"
               style={{ fontFamily: "var(--font-primary)" }}>
-              Movers is a late night bar in Hockley, Nottingham serving <strong>ice cold German lagers</strong>, <strong>Guinness on draught</strong>, specialist wine carafes, spritz and cocktails. Whether you are joining us for after work drinks, a casual pint or a night out in Nottingham, our bar offers a relaxed space with great drinks and amazing music. <br></br><br></br><strong>Enjoy happy hour with <strong>£5 pints</strong> and <strong>£6.50 double spritz</strong>, or ask our team for specials!</strong>
+              Movers is a late night bar in Hockley, Nottingham serving <strong>ice cold German lagers</strong>, <strong>Guinness on draught</strong>, specialist wine carafes, spritz and cocktails. Whether you are joining us for after work drinks, a casual pint or a night out in Nottingham, our bar offers a relaxed space with great drinks and amazing music. <br></br><br></br><strong>Enjoy happy hour with <strong>£5 Ayinger pints</strong> or ask our team for specials!</strong>
             </p>
           </div>
         </div>
@@ -315,7 +315,7 @@ export default function Home() {
               <p className="text-[16px] leading-relaxed text-zinc-300 max-w-md"
                 style={{ fontFamily: "var(--font-primary)"}}>
                 Movers is a home for DJs, selectors and music lovers in Nottingham. Our late night bar & events bring together local talent, headline artists and promoter-led parties across <strong>dance music, electronic,
-                disco, soul, RNB, funk and everything in between</strong>. With <strong>vinyl DJs</strong>, carefully curated lineups, live streams and a focus on creating a <strong>safe and inclusive dancefloor</strong>, <strong>Movers is a space where everyone can discover new music and share the experience together</strong>.
+                disco, soul, RNB, funk and everything in between</strong>.<br></br>With <strong>vinyl DJs</strong>, carefully curated lineups, live streams and a focus on creating a <strong>safe and inclusive dancefloor</strong>, <strong>Movers is a space where everyone can discover new music and share the experience together</strong>.
               </p>
               <a
                 href="https://ra.co/clubs/262186"
