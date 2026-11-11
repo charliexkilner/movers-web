@@ -4,8 +4,7 @@
 /* ─── Data ─────────────────────────────────────────── */
 
 const HOURS = [
-  { days: "Tue – Wed", time: "11:00 – 21:00" },
-  { days: "Thu – Sat", time: "11:00 – 00:00" },
+  { days: "Wed – Sar", time: "12:00 – 00:00" },
 ];
 
 /* ─── Helpers ───────────────────────────────────────── */
@@ -151,9 +150,8 @@ export default function Home() {
    
           <div className="flex flex-col gap-[10px]">
             {[
-              { label: "Instagram", href: "#" },
-              { label: "RA",        href: "#" },
-              { label: "Newsletter",href: "#" },
+              { label: "Instagram", href: "https://www.instagram.com/movers.venue/?hl=en" },
+              { label: "RA",        href: "https://ra.co/clubs/262186" },
             ].map(({ label, href }) => (
               <a key={label} href={href}
                 className="text-white/70 hover:text-white transition-colors w-fit"
